@@ -11,6 +11,10 @@ from time import sleep
     # Press Button
 # Check for Window's Updates
 with Keyboard() as k, Mouse() as m:
-    k.press([KeyCodes.MOD_LEFT_GUI, KeyCodes.KEY_R])
-    sleep(5)
-    k.press([KeyCodes.MOD_LEFT_GUI])
+    k.press([], KeyCodes.MOD_LEFT_GUI)
+    sleep(3)
+    k.type("windows updates")
+    k.press([], KeyCodes.KEY_ENTER)
+    for i in range(1,4):
+        k.press([], KeyCodes.KEY_TAB)
+    k.press([], KeyCodes.KEY_ENTER)
