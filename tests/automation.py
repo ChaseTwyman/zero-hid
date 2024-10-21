@@ -18,6 +18,4 @@ with Keyboard() as k, Mouse() as m:
     k.press([], KeyCodes.KEY_ENTER)
     k.press([], KeyCodes.KEY_ESC)
     sleep(3)
-    for i in range(2):
-        k.press([], KeyCodes.KEY_TAB)
     k.press([], KeyCodes.KEY_ENTER)
