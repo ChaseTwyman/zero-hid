@@ -16,6 +16,7 @@ with Keyboard() as k, Mouse() as m:
     k.type("windows updates")
     sleep(3)
     k.press([], KeyCodes.KEY_ENTER)
+    sleep(3)
     for i in range(1,4):
         k.press([], KeyCodes.KEY_TAB)
     k.press([], KeyCodes.KEY_ENTER)
