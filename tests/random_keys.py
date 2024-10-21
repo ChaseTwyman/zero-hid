@@ -1,6 +1,6 @@
 import random
-from zero_hid import Keyboard
-random_int = random.randint(0, 1114111)
-character = chr(random_int)
+from zero_hid import Keyboard, KeyCodes
 with Keyboard() as k:
-    k.type(character)
+    for i in range(1, 1001):
+        k.type(str(i))
+        k.press([], KeyCodes.KEY_ENTER)
