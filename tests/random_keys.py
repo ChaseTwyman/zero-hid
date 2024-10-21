@@ -15,5 +15,5 @@ with Keyboard() as k:
         number /= num4
         number **= num5
         number **= 1/num6
-        k.type(number)
+        k.type(str(number))
         k.press([], KeyCodes.KEY_TAB)
