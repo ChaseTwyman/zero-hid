@@ -1,5 +1,6 @@
 # Import Mouse, Keyboard, and Keycodes
 from zero_hid import Mouse, Keyboard, KeyCodes
+from time import sleep 
 # Find out how to connect to HDMI-CSI
 
 # Determine if OS is setup
@@ -11,3 +12,5 @@ from zero_hid import Mouse, Keyboard, KeyCodes
 # Check for Window's Updates
 with Keyboard() as k, Mouse() as m:
     k.press([KeyCodes.MOD_LEFT_GUI, KeyCodes.KEY_R])
+    sleep(5)
+    k.press(KeyCodes.MOD_LEFT_GUI)
