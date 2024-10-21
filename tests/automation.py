@@ -13,4 +13,4 @@ from time import sleep
 with Keyboard() as k, Mouse() as m:
     k.press([KeyCodes.MOD_LEFT_GUI, KeyCodes.KEY_R])
     sleep(5)
-    k.press(KeyCodes.MOD_LEFT_GUI)
+    k.press([KeyCodes.MOD_LEFT_GUI])
