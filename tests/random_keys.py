@@ -1,7 +1,7 @@
 import random
 from zero_hid import Keyboard, KeyCodes
 from time import sleep
-number = 2
+number = 100
 sleep(5)
 with Keyboard() as k:
     for i in range(1, 1001):
