@@ -10,12 +10,19 @@ from time import sleep
     
     # Press Button
 # Check for Window's Updates
-with Keyboard() as k, Mouse() as m:
+with Keyboard() as k, Mouse(absolute=False) as rel_mouse, Mouse(absolute=True) as abs_mouse:
+    OS = {
+    "version": "Windows 10"
+    }
+    if OS["version"] == "Windows 11":
+        abs_mouse.move(30500,7000)
+    elif OS["version"] == "Windows 10":
+        abs_mouse.move(8800,7100)
     k.press([KeyCodes.MOD_LEFT_GUI])
     sleep(3)
     k.type("windows updates")
     sleep(3)
     k.press([], KeyCodes.KEY_ENTER)
     k.press([], KeyCodes.KEY_ESC)
-    sleep(3)
-    k.press([], KeyCodes.KEY_ENTER)
+    sleep(5)
+    rel_mouse.left_click()
