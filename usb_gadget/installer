@@ -35,6 +35,7 @@ install() {
     echo "libcomposite" | sudo tee -a /etc/modules
     cp init_usb_gadget /usr/bin/ # USB gadget configFS
     chmod +x /usr/bin/init_usb_gadget
+    sed -i '/^exit 0/i v4l2-ctl --set-edid=file=TC358743-Driver/1080p25edid' /etc/rc.local # libcomposite configuration
     sed -i '/^exit 0/i /usr/bin/init_usb_gadget' /etc/rc.local # libcomposite configuration
     /usr/bin/init_usb_gadget 2>/dev/null
 }
