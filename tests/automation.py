@@ -1,6 +1,7 @@
 # Import Mouse, Keyboard, and Keycodes
 from zero_hid import Mouse, Keyboard, KeyCodes
-from time import sleep 
+from time import sleep
+import subprocess
 # Find out how to connect to HDMI-CSI
 
 # Determine if OS is setup
@@ -11,6 +12,7 @@ from time import sleep
     # Press Button
 # Check for Window's Updates
 with Keyboard() as k, Mouse(absolute=False) as rel_mouse, Mouse(absolute=True) as abs_mouse:
+    subprocess.call(['sh', './usb_gadget/video.sh'])
     OS = {
     "version": "Windows 10"
     }
