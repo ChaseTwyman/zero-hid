@@ -11,8 +11,8 @@ import subprocess
     
     # Press Button
 # Check for Window's Updates
+subprocess.call(['sh', './usb_gadget/video.sh'])
 with Keyboard() as k, Mouse(absolute=False) as rel_mouse, Mouse(absolute=True) as abs_mouse:
-    subprocess.call(['sh', '../usb_gadget/video.sh'])
     OS = {
     "version": "Windows 10"
     }
