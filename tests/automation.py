@@ -11,8 +11,6 @@ import subprocess
     
     # Press Button
 # Check for Window's Updates
-subprocess.call(['sh', 'zero-hid/usb_gadget/video.sh'])
-subprocess.call(['ffmpeg', '-f', 'v4l2', '-i', '/dev/video0', '-vf', 'select=eq(n\,1)', '-frames', '1', 'still_image1.png'])
 with Keyboard() as k, Mouse(absolute=False) as rel_mouse, Mouse(absolute=True) as abs_mouse:
     OS = {
     "version": "Windows 10"
