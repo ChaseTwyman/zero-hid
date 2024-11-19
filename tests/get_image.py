@@ -8,8 +8,8 @@ ky=30.283
 im = cv2.imread('still_image.png')
 
 # Define the blue colour we want to find - remember OpenCV uses BGR ordering
-u = np.array([255,255,255])
-l = np.array([250,250,250])
+u = np.array([25,25,25])
+l = np.array([0,0,0])
 # Get X and Y coordinates of all blue pixels
 Y, X = np.where(np.all(u-l-2*abs(im-l/2-u/2)>=[0,0,0],axis=2))
 print(len(X),len(Y))
