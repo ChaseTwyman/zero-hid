@@ -1,4 +1,4 @@
-import cv2, random, numpy as np
+import cv2, numpy as np
 from zero_hid import Mouse
 borderx = 26
 kx=17.048
