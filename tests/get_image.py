@@ -1,9 +1,13 @@
 import cv2, numpy as np
 from zero_hid import Mouse
-borderx = 26
-kx=17.048
-bordery = 46
-ky=30.283
+border = {
+    "x" : 26,
+    "y" : 46
+}
+constant = {
+    "x" : 17.048,
+    "y" : 30.
+}
 # Load image
 im = cv2.imread('still_image.png')
 
@@ -20,4 +24,4 @@ with Mouse(absolute=True) as m:
     #     m.move(51,1000)
     # m.move(int(17*2),2767)
     for i in range(len(X)):
-        m.move(borderx+int(kx*X[i]),bordery+int(ky*Y[i]))
+        m.move(border["x"]+int(constant["x"]*X[i]),border["y"]+int(constant["y"]*Y[i]))
