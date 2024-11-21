@@ -6,6 +6,3 @@ class crop_image:
     def __enter__(self): {}
     def __exit__(self, *args):
         cv2.write(self.path,cv2.imread(self.path))
-with crop_image("win10") as win10:
-    with OCR("win10") as text:
-        print(text)

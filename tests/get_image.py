@@ -1,12 +1,16 @@
 import cv2, numpy as np
 from zero_hid import Mouse
+incriment = {
+    "x" : 24
+    "y" : 42
+}
 border = {
-    "x" : 26,
-    "y" : 46
+    "x" : 11,
+    "y" : 22
 }
 constant = {
-    "x" : 17.048,
-    "y" : 30.
+    "x" : 17.063,
+    "y" : 30.328
 }
 # Load image
 im = cv2.imread('still_image.png')
