@@ -1,6 +1,7 @@
 import cv2, pytesseract
 from os import path
 from take_screenshot import take_screenshot
+from pytesseract import Output
 class OCR:
     def __init__(self, cropped, *args):
         self.cropped = cropped
@@ -21,9 +22,8 @@ class OCR:
     def __exit__(self, *args): {}
 
 class text_finder:
-    def __init__(self, text, cropped, *args):
+    def __init__(self, cropped, *args):
         self.cropped = cropped
-        self.text = text
         if cropped:
             self.width = str(args[0]["width"])
             self.height = str(args[0]["height"])
@@ -36,6 +36,10 @@ class text_finder:
             if not path.exists(self.file_name):
                 with take_screenshot(self.file_name, False) as screenshot: {}
         self.image = cv2.imread(self.file_name)
+        self.results = pytesseract.image_to_data(self.image, output_type=Output.DICT)
     def __enter__(self):
-        return pytesseract.image_to_data(self.image, output_type=Output.DICT)
+        coords = []
+        for i in range(0, len(self.results["text"])):
+            coords.append([self.results["width"][i], self.results["height"][i], self.results["left"][i], self.results["top"][i]])
+        return [self.results["text"], coords]
     def __exit__(self, *args): {}

@@ -20,4 +20,5 @@ class take_screenshot:
                 '-frames', '1', self.file_name])
         else:
             subprocess.call(['ffmpeg', '-f', 'v4l2', '-i', '/dev/video0', '-vf', 'select=eq(n\,1)', '-frames', '1', self.file_name])
-            
+with take_screenshot("test_image", True, 170, 25, 107, 1043) as d: {}
+# with take_screenshot("test_image", False) as d: {}
