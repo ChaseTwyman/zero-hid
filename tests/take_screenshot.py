@@ -15,10 +15,13 @@ class take_screenshot:
         if path.exists(self.file_name): remove(self.file_name)
         if self.cropped:
             subprocess.call(
-                ['ffmpeg', '-f', 'v4l2', '-i', '/dev/video0', '-vf',
+                ['ffmpeg', '-hide_banner', '-loglevel', 'error', '-f', 'v4l2', '-i', '/dev/video0', '-vf',
                 'select=eq(n\,1), crop=' + self.width + ':' + self.height + ':' + self.x + ':' + self.y,
                 '-frames', '1', self.file_name])
+            print(f"\tscreenshot saved to {self.file_name}")
         else:
-            subprocess.call(['ffmpeg', '-f', 'v4l2', '-i', '/dev/video0', '-vf', 'select=eq(n\,1)', '-frames', '1', self.file_name])
+            subprocess.call(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-f', 'v4l2', '-i',
+            '/dev/video0', '-vf', 'select=eq(n\,1)', '-frames', '1', self.file_name])
+            print(f"screenshot saved to {self.file_name}")
 # with take_screenshot("test_image", True, 170, 25, 107, 1043) as d: {}
 # with take_screenshot("test_image", False) as d: {}
