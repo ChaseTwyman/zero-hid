@@ -1,11 +1,9 @@
 # Import Mouse, Keyboard, and Keycodes
 from zero_hid import Mouse, Keyboard, KeyCodes
 from connect_display import Connect_Display
-from take_screenshot import take_screenshot
 from time import sleep, perf_counter
 from Move_Mouse import move_mouse
 from ocr import OCR, text_finder
-import subprocess
 # Find out how to connect to HDMI-CSI
 
 # Determine if OS is setup
@@ -244,7 +242,7 @@ def clear_temp():
     k.type('cleanmgr.exe')
     k.press([], KeyCodes.KEY_ENTER)
     sleep(3)
-    k.press([KeyCodes.MOD_LEFT_ALT, KeyCodes.MOD_LEFT_SHIFT], KeyCodes.KEY_TAB)
+    k.press([KeyCodes.MOD_LEFT_ALT, KeyCodes.MOD_LEFT_SHIFT, KeyCodes.KEY_TAB])
     sleep(3)
     k.press([], KeyCodes.KEY_DOWN)
     sleep(1)
@@ -323,6 +321,6 @@ with Keyboard() as k, Mouse() as rel_mouse:
     # Clears Temporary Files
     
     timer8 = perf_counter()
-    print(f"Time to Install Software: {timer8 - timer7:.6f} seconds\n")
+    print(f"Time to Clear Temp: {timer8 - timer7:.6f} seconds\n")
 
     print(f"Total Time: {timer8 - timer1:.6f} seconds\n")

@@ -1,8 +1,3 @@
-import time
-from time import perf_counter
-
-start = perf_counter()
-end = perf_counter()
-something = perf_counter()
-
-print(f"Time taken for 1 million calls: {start:.6f} {end:.6f} {something:.6f} seconds")
+from zero_hid import Mouse, Keyboard, KeyCodes
+with Keyboard() as k, Mouse() as rel_mouse:
+    k.press([KeyCodes.MOD_LEFT_ALT, KeyCodes.MOD_LEFT_SHIFT, KeyCodes.KEY_TAB])
