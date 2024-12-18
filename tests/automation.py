@@ -142,6 +142,7 @@ def set_scaling():
         sleep(0.5)
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_UP)
         sleep(5)
+        return True
 def check_for_updates():
     # Open Settings
 
