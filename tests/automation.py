@@ -276,6 +276,8 @@ def clear_temp():
     sleep(3)
     k.type('dfrgui.exe')
     sleep(1)
+    k.press([], KeyCodes.KEY_ENTER)
+    sleep(1)
     k.press([], KeyCodes.KEY_TAB)
     sleep(1)
     k.press([], KeyCodes.KEY_TAB)
