@@ -68,7 +68,7 @@ def determine_OS(not_first_time = False): # Checks for and Saves OS Version
         OS["version"] = "Windows 11"
         return True
     else:
-        print(OCR(False, "larger_scaled_os_screenshot").enter())
+        print(OCR(False, "larger_scaled_os_screenshot").__enter__())
     # If niether returns true, then assume computer is on login screen or not on desktop and try to login assuming no password
     if not_first_time:
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_D) # Goes to Desktop if on a fullscreen window
