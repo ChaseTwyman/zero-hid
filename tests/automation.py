@@ -45,8 +45,8 @@ Checklist = {
 def retry(function, threshold):
     for i in range(threshold):
         if function == True or function != -1:
-            return true
-    return false
+            return True
+    return False
 def duplicate_display():
     k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_R)
     sleep(3) # Probably needs a conditional
