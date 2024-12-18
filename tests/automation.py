@@ -133,6 +133,7 @@ def set_scaling():
             print("Could not find system settings button")
             return False
     elif OS["version"] == "Windows 11":
+        print("debpug1")
         sleep(5)
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_DOWN)
         sleep(0.5)
