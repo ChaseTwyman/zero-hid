@@ -67,6 +67,9 @@ def determine_OS(not_first_time = False): # Checks for and Saves OS Version
     if text_finder(True, {"width":960, "height":180, "x":0, "y":900}, "larger_scaled_os_screenshot").containsNCS("Search") > -1:
         OS["version"] = "Windows 11"
         return True
+    if text_finder(True, {"width":960, "height":180, "x":0, "y":1000}, "larger_scaled_os_screenshot").containsNCS("Search") > -1:
+        OS["version"] = "Windows 11"
+        return True
     else:
         print(OCR(False, "larger_scaled_os_screenshot").__enter__())
     # If niether returns true, then assume computer is on login screen or not on desktop and try to login assuming no password
