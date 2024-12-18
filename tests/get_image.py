@@ -1,7 +1,7 @@
 import cv2, numpy as np
 from zero_hid import Mouse
 incriment = {
-    "x" : 24
+    "x" : 24,
     "y" : 42
 }
 border = {

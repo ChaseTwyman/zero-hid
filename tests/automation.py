@@ -227,7 +227,26 @@ def install_software():
     k.press([], KeyCodes.KEY_LEFT)
     sleep(0.1)
     k.press([], KeyCodes.KEY_ENTER)
-
+def clear_temp():
+    k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_R)
+    sleep(3)
+    k.type('cleanmgr.exe')
+    k.press([], KeyCodes.KEY_ENTER)
+    sleep(5)
+    k.press([KeyCodes.MOD_LEFT_ALT, KeyCodes.MOD_LEFT_SHIFT], KeyCodes.KEY_TAB)
+    sleep(3)
+    k.press([], KeyCodes.KEY_DOWN)
+    k.press([], KeyCodes.KEY_SPACE)
+    k.press([], KeyCodes.KEY_END)
+    k.press([], KeyCodes.KEY_SPACE)
+    k.press([], KeyCodes.KEY_UP)
+    k.press([], KeyCodes.KEY_UP)
+    k.press([], KeyCodes.KEY_SPACE)
+    k.press([], KeyCodes.KEY_TAB)
+    k.press([], KeyCodes.KEY_TAB)
+    k.press([], KeyCodes.KEY_TAB)
+    k.press([], KeyCodes.KEY_SPACE)
+    k.press([], KeyCodes.KEY_SPACE)
 with Keyboard() as k, Mouse() as rel_mouse:
     timer1 = perf_counter()
     rel_mouse.move(1,0)
@@ -267,8 +286,6 @@ with Keyboard() as k, Mouse() as rel_mouse:
             Checklist["Windows Update"]["Check for Update"] = True
         k.press([KeyCodes.MOD_LEFT_ALT], KeyCodes.KEY_F4)
 
-
-
     timer6 = perf_counter()
     print(f"Time to Check for Windows Updates: {timer6 - timer5:.6f} seconds\n")
 
@@ -277,5 +294,13 @@ with Keyboard() as k, Mouse() as rel_mouse:
     # Check later if software installed correctly
 
     timer7 = perf_counter()
-    print(f"Time to Check for Windows Updates: {timer7 - timer6:.6f} seconds\n")
-    print(f"Total Time: {timer7 - timer1:.6f} seconds\n")
+    print(f"Time to Install Software: {timer7 - timer6:.6f} seconds\n")
+
+    # Task 3
+    clear_temp()
+    # Clears Temporary Files
+    
+    timer8 = perf_counter()
+    print(f"Time to Install Software: {timer8 - timer7:.6f} seconds\n")
+    
+    print(f"Total Time: {timer8 - timer1:.6f} seconds\n")
