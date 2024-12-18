@@ -246,7 +246,7 @@ def clear_temp():
     sleep(5)
     k.press([], KeyCodes.MOD_LEFT_ALT, False)
     sleep(0.5)
-    k.press([KeyCodes.MOD_LEFT_ALT, KeyCodes.MOD_LEFT_SHIFT], KeyCodes.KEY_TAB)
+    k.press([KeyCodes.MOD_LEFT_SHIFT], KeyCodes.KEY_TAB)
     sleep(3)
     k.press([], KeyCodes.KEY_DOWN)
     sleep(1)
