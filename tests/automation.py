@@ -271,6 +271,27 @@ def clear_temp():
     k.press([], KeyCodes.KEY_SPACE)
     sleep(1)
     k.press([], KeyCodes.KEY_SPACE)
+    sleep(5)
+    k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_R)
+    sleep(3)
+    k.type('dfrgui.exe')
+    sleep(1)
+    k.press([], KeyCodes.KEY_TAB)
+    sleep(1)
+    k.press([], KeyCodes.KEY_TAB)
+    sleep(15)
+    k.press([], KeyCodes.KEY_ESC)
+    sleep(1)
+def sys_info():
+    k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_R)
+    sleep(3)
+    k.type("msinfo32.exe")
+    k.sleep(1)
+    k.press([], KeyCodes.KEY_ENTER)
+    sleep(3)
+    k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_UP)
+    sleep(3)
+    print(OCR(False, "sysinfo").__enter__())
 with Keyboard() as k, Mouse() as rel_mouse:
     timer1 = perf_counter()
     rel_mouse.move(1,0)
@@ -320,11 +341,18 @@ with Keyboard() as k, Mouse() as rel_mouse:
     timer7 = perf_counter()
     print(f"Time to Install Software: {timer7 - timer6:.6f} seconds\n")
 
-    # Task 3
+    # Task 3 and 4
     clear_temp()
     # Clears Temporary Files
     
     timer8 = perf_counter()
     print(f"Time to Clear Temp: {timer8 - timer7:.6f} seconds\n")
 
-    print(f"Total Time: {timer8 - timer1:.6f} seconds\n")
+    # Task 5
+    sys_info()
+    # Documents Hardware and Software information
+    
+    timer9 = perf_counter()
+    print(f"Time for Documentation: {timer9 - timer8:.6f} seconds\n")
+
+    print(f"Total Time: {timer9 - timer1:.6f} seconds\n")
