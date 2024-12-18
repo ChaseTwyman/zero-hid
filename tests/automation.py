@@ -133,6 +133,7 @@ def set_scaling():
             print("Could not find system settings button")
             return False
     elif OS["version"] == "Windows 11":
+        sleep(5)
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_DOWN)
         sleep(0.5)
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_DOWN)
@@ -140,6 +141,7 @@ def set_scaling():
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_UP)
         sleep(0.5)
         k.press([KeyCodes.MOD_LEFT_GUI], KeyCodes.KEY_UP)
+        sleep(5)
 def check_for_updates():
     # Open Settings
 
@@ -189,6 +191,7 @@ def check_for_updates():
 
     if OS["version"] == "Windows 11":
         if not OS["Rely on OCR"]:
+            print("debug")
             with OCR(True, {"width":238-80, "height":819-794, "x":80, "y":794}, "update_path") as update_path:
                 complete = False
                 for i in range(0, constants["repeat_num"]):
