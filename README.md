@@ -1,4 +1,4 @@
-
+```
 sudo nano /boot/firmware/cmdline.txt
 --------------------------------------------------
 cma=96M
@@ -42,6 +42,7 @@ echo $FILE > functions/mass_storage.usb0/lun.0/file
 ln -s functions/mass_storage.usb0 configs/c.1/
 ---------------------------------------------------Ctrl+O Enter Ctrl+X
 sudo reboot
+```
 <img width=550 src="https://github.com/thewh1teagle/zero-hid/assets/61390950/13608efd-15c1-4fdd-86b5-e411e15fa638">
 
 HID python library for emulating mouse and keyboard on PI.
