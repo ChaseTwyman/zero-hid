@@ -118,4 +118,3 @@ see [examples](examples)
 Absolute mouse used only for positining. use relative mouse for clicking etc. see examples.
 more setup commands for the Raspberry Pi:
 https://github.com/thewh1teagle/zero-hid
-```
