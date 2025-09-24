@@ -1,4 +1,47 @@
 
+sudo nano /boot/firmware/cmdline.txt
+--------------------------------------------------
+cma=96M
+-------------------------------------------------- Ctrl+O Enter Ctrl+X
+
+How to setup the Raspberry Pi Zero 2 W to automate maintenance tasks:
+1.) Format USB to Raspberry Pi (Bullseye/Bookworm) Lite 64bit
+2.) Set network configuration, timezone, reigon, keyboard, and ssh.
+-----------------------------------------------------
+After SSD is set up, plug it into the RPZ2W
+
+Execute the following commands:
+sudo apt-get update
+
+sudo apt-get install -y git python3-pip python3-venv ffmpeg tesseract-ocr libtesseract-dev
+
+git clone https://github.com/ChaseTwyman/Automated-Maintenance-Device
+cd zero-hid/usb_gadget
+sudo ./installer
+y
+-------------------------------------------------- Restart
+v4l2-ctl --set-edid=file=zero-hid/1080p30edid
+python3 -m venv ~/venv
+v4l2-ctl --set-dv-bt-timings query
+source ~/venv/bin/activate
+pip3 install zero-hid opencv-python pytesseract
+dd if=/dev/zero of=~/usbdisk.img bs=64k count=8192
+mkdosfs ~/usbdisk.img
+sudo nano /usr/bin/init_usb_gadget
+--------------------------------------------------- After Zero-HID Configuration
+FILE=/home/iChaseBank/usbdisk.img
+mkdir -p ${FILE/img/d}
+# mount -o loop,ro,offset=1048576 -t ext4 $FILE ${FILE/img/d} # FOR OLD WAY OF MAKING THE IMAGE
+mount -o loop,ro, -t vfat $FILE ${FILE/img/d} # FOR IMAGE CREATED WITH DD
+mkdir -p functions/mass_storage.usb0
+echo 1 > functions/mass_storage.usb0/stall
+echo 0 > functions/mass_storage.usb0/lun.0/cdrom
+echo 0 > functions/mass_storage.usb0/lun.0/ro
+echo 0 > functions/mass_storage.usb0/lun.0/nofua
+echo $FILE > functions/mass_storage.usb0/lun.0/file
+ln -s functions/mass_storage.usb0 configs/c.1/
+---------------------------------------------------Ctrl+O Enter Ctrl+X
+sudo reboot
 <img width=550 src="https://github.com/thewh1teagle/zero-hid/assets/61390950/13608efd-15c1-4fdd-86b5-e411e15fa638">
 
 HID python library for emulating mouse and keyboard on PI.
@@ -75,46 +118,3 @@ Absolute mouse used only for positining. use relative mouse for clicking etc. se
 more setup commands for the Raspberry Pi:
 https://github.com/thewh1teagle/zero-hid
 ```
-sudo nano /boot/firmware/cmdline.txt
---------------------------------------------------
-cma=96M
--------------------------------------------------- Ctrl+O Enter Ctrl+X
-
-How to setup the Raspberry Pi Zero 2 W to automate maintenance tasks:
-1.) Format USB to Raspberry Pi (Bullseye/Bookworm) Lite 64bit
-2.) Set network configuration, timezone, reigon, keyboard, and ssh.
------------------------------------------------------
-After SSD is set up, plug it into the RPZ2W
-
-Execute the following commands:
-sudo apt-get update
-
-sudo apt-get install -y git python3-pip python3-venv ffmpeg tesseract-ocr libtesseract-dev
-
-git clone https://github.com/GameWire9/zero-hid
-cd zero-hid/usb_gadget
-sudo ./installer
-y
--------------------------------------------------- Restart
-v4l2-ctl --set-edid=file=zero-hid/1080p30edid
-python3 -m venv ~/venv
-v4l2-ctl --set-dv-bt-timings query
-source ~/venv/bin/activate
-pip3 install zero-hid opencv-python pytesseract
-dd if=/dev/zero of=~/usbdisk.img bs=64k count=8192
-mkdosfs ~/usbdisk.img
-sudo nano /usr/bin/init_usb_gadget
---------------------------------------------------- After Zero-HID Configuration
-FILE=/home/iChaseBank/usbdisk.img
-mkdir -p ${FILE/img/d}
-# mount -o loop,ro,offset=1048576 -t ext4 $FILE ${FILE/img/d} # FOR OLD WAY OF MAKING THE IMAGE
-mount -o loop,ro, -t vfat $FILE ${FILE/img/d} # FOR IMAGE CREATED WITH DD
-mkdir -p functions/mass_storage.usb0
-echo 1 > functions/mass_storage.usb0/stall
-echo 0 > functions/mass_storage.usb0/lun.0/cdrom
-echo 0 > functions/mass_storage.usb0/lun.0/ro
-echo 0 > functions/mass_storage.usb0/lun.0/nofua
-echo $FILE > functions/mass_storage.usb0/lun.0/file
-ln -s functions/mass_storage.usb0 configs/c.1/
----------------------------------------------------Ctrl+O Enter Ctrl+X
-sudo reboot
